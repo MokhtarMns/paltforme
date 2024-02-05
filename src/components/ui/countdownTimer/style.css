@@ -1,0 +1,42 @@
+.clock {
+  position: fixed;
+  box-sizing: border-box;
+  width: 76.05%;
+  padding: 1rem 2rem;
+
+  margin: 0 auto;
+  margin-left: 7.9rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #364053;
+  color: #f3f3f3;
+  font-size: 1.1rem;
+  gap: 1rem;
+  line-height: 1;
+}
+
+.clock .flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.time {
+  width: 7rem;
+  text-align: center;
+  padding: 0.5rem;
+  border: 2px solid #707788;
+  border-radius: 0.25rem;
+}
+
+.clock .answers{
+    text-align: center;
+  padding: 0.5rem;
+  border: 2px solid #707788;
+  border-radius: 0.25rem;
+
+}
+

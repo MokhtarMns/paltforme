@@ -1,0 +1,160 @@
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "./style.css";
+import { BoxIcon } from "boxicons";
+import "boxicons/css/boxicons.min.css";
+import { UserContext } from "../../../providers/UserProvider";
+
+export function Course() {
+  const [courses, setCourses] = useState([]);
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
+  const { userData } = useContext(UserContext);
+  const pastelColors = [
+    "#AFC8AD",
+    "#29ADB2",
+    "#F7B787",
+    "#88AB8E",
+    "#8ADAB2",
+    "#FF8F8F",
+    "#61A3BA",
+    "#B5CB99",
+  ];
+  const { courseId } = useParams();
+  const courseName = courseId.replace(/_/g, " ");
+  useEffect(() => {
+    const getChaptersForModule = (moduleId) => {
+      if (userData && userData.classes) {
+        for (const userClass of userData.classes) {
+          for (const module of userClass.modules) {
+            if (module.id === moduleId) {
+              // Found the module, return its chapters
+              return module.chapters;
+            }
+          }
+        }
+      }
+      return []; // Return empty array if no data or module not found
+    };
+    const fetchChapters = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/chapters", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ courseId: courseId }),
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const coursesData = await response.json();
+        console.log(coursesData.chapters);
+        setCourses(coursesData.chapters);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    setCourses(getChaptersForModule(courseId));
+    //fetchChapters();
+  }, []);
+
+  const handleTileClick = (course) => {
+    if (selectedCourseId === course.id) {
+      setSelectedCourseId(null); // Close sublinks if the same tile is clicked
+    } else {
+      setSelectedCourseId(course.id);
+    }
+  };
+
+  return (
+    <div className="course">
+      <h1>{courseName}</h1>
+
+      <div className="chapters-list">
+        {courses.map((course) => (
+          <div
+            className={`chapter-tile ${
+              selectedCourseId === course.id ? "open" : ""
+            }`}
+            key={course.id}
+            onClick={() => handleTileClick(course)}
+          >
+            <div className="row">
+              <div
+                className="chapter-number"
+                style={{
+                  backgroundColor:
+                    pastelColors[(course.order + 1) % pastelColors.length],
+                }}
+              >
+                <p>{course.order}</p>
+              </div>
+              <div className="chapter-name">
+                <p>{course.title}</p>
+              </div>
+            </div>
+
+            {selectedCourseId === course.id ? (
+              <div
+                className={`sublinks ${
+                  selectedCourseId === course.id ? "open" : ""
+                }`}
+              >
+                <div className="sublink">
+                  <div
+                    className="sublink-icon"
+                    id="documents-icon"
+                    style={{
+                      backgroundColor:
+                        pastelColors[(course.order + 1) % pastelColors.length],
+                    }}
+                  ></div>
+                  <div className="sublink-label">Documents</div>
+                </div>
+                <div className="sublink">
+                  <div
+                    className="sublink-icon"
+                    id="exercices-icon"
+                    style={{
+                      backgroundColor:
+                        pastelColors[(course.order + 1) % pastelColors.length],
+                    }}
+                  ></div>
+                  <div className="sublink-label">Exercices</div>
+                </div>
+                <div className="sublink">
+                  <div
+                    className="sublink-icon"
+                    id="labs-icon"
+                    style={{
+                      backgroundColor:
+                        pastelColors[(course.order + 1) % pastelColors.length],
+                    }}
+                  ></div>
+                  <div className="sublink-label">Labs</div>
+                </div>
+
+                <div className="sublink">
+                  <div
+                    className="sublink-icon"
+                    id="exams-icon"
+                    style={{
+                      backgroundColor:
+                        pastelColors[(course.order + 1) % pastelColors.length],
+                    }}
+                  ></div>
+                  <div className="sublink-label">Exams</div>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="resource-viewer"></div>
+    </div>
+  );
+}

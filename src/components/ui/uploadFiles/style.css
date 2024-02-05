@@ -1,0 +1,43 @@
+.fileUpload {
+  --clr-background: hsl(220, 21%, 97%);
+  --clr-border: hsl(220, 21%, 27%);
+  width: 27rem;
+  height: 20rem;
+  background-color: var(--clr-background);
+  border-radius: 1rem;
+  border: 2px dashed var(--clr-border);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileUpload img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+.fileUpload p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: hsl(0, 0%, 5%);
+}
+
+.fileUpload button {
+  position: relative;
+  background-color: var(--clr-border);
+  border-radius: 2rem;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.fileUpload button:hover {
+  transform: scale(1.02);
+}
+.fileUpload input {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+}

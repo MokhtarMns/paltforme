@@ -1,0 +1,169 @@
+.dashboard {
+  background-color: #fff;
+  padding: 1.5rem 1rem;
+}
+
+.dashboard h1 {
+  margin: 0;
+}
+
+.row-group {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 4rem;
+}
+.user-status {
+  width: 100%;
+  background-color: #e8e4e6;
+  border-radius: 1rem;
+
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-stats {
+  width: 100%;
+  background-color: #e8e4e6;
+  border-radius: 1rem;
+
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-stats .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #191919;
+}
+
+.stat-circle {
+  width: 5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid;
+  display: grid;
+  place-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  background-color: hsl(220, 21%, 37%);
+}
+.user {
+  display: flex;
+  gap: 3rem;
+  color: #191919;
+}
+
+.user-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -8rem;
+  user-select: none;
+}
+.badge img {
+  width: 17rem;
+  height: 8rem;
+  object-fit: cover;
+}
+
+.badge p {
+  font-size: 1.2rem;
+  color: #191919;
+}
+.rank {
+  color: hsl(0, 99%, 40%);
+  padding: 0.25rem 0.35rem;
+  font-weight: 600;
+  border: 2px solid hsl(0, 99%, 40%);
+  border-radius: 0.4rem;
+}
+
+.user h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.user p {
+  font-size: 1.1rem;
+}
+.avatar {
+  width: 6rem;
+  height: 6rem;
+  background-color: #374155aa;
+  border-radius: 50%;
+  border: 4px solid #374155;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.dashboard-grid {
+  display: grid;
+  margin-top: 2rem;
+  padding: 1rem 4rem;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 10px;
+  gap: 2rem;
+}
+
+.card {
+  position: relative;
+  border-radius: 0.75rem;
+  background-color: #e8e4e6;
+  color: #191919;
+  padding: 1.5rem;
+
+  line-height: 1;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.no-padding {
+  padding: 0;
+  grid-row: span 14;
+}
+
+.no-padding h2 {
+  padding-top: 2rem !important;
+  padding-left: 2rem !important;
+}
+
+.radar-chart {
+  position: relative;
+  width: 30rem;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.solved-tasks-card {
+  grid-row: span 9;
+}
+.time-spent-card {
+  grid-row: span 7;
+}
+
+.chapters-card {
+  grid-row: span 9;
+}

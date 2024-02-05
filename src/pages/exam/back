@@ -1,0 +1,58 @@
+// ExamResultsPage.js
+
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Quiz from "../../components/ui/quiz/Quiz";
+
+import "./style.css";
+
+const ExamPage = ({ questions }) => {
+  const location = useLocation();
+  const { selectedChapters, selectedExamType, selectedDifficulty, questions } =
+    location.state || {};
+
+  //const [questions, setQuestions] = useState(questions);
+
+  useEffect(() => {
+    const apiUrl = "http://localhost:5000/exam";
+
+    const payload = {
+      chapters: selectedChapters,
+      examType: selectedExamType,
+      difficulty: selectedDifficulty,
+    };
+
+    fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("QUESTIONS++++>", data.explanation);
+        setQuestions(data.explanation);
+      })
+      .catch((error) => {
+        console.error("API Error:", error);
+        // Handle errors
+      });
+  }, [selectedChapters, selectedExamType, selectedDifficulty]);
+
+  return (
+    <div className="exam-page">
+      <h1>Good Luck!</h1>
+      <div className="quiz-wrapper">
+        {questions && <Quiz questions={questions}></Quiz>}
+      </div>
+    </div>
+  );
+};
+
+export default ExamPage;

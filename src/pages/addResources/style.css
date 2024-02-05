@@ -1,0 +1,41 @@
+.addResources {
+  --clr-background: hsl(220, 21%, 92%);
+  --clr-border: hsl(220, 21%, 27%);
+
+  color: black;
+  background-color: var(--clr-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addResources form {
+  width: 30rem;
+}
+
+.addResources label {
+  display: block;
+}
+
+.addResources select {
+  width: 20rem;
+  background-color: transparent;
+  border: 2px solid var(--clr-border);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  background-color: hsl(220, 21%, 100%);
+  color: var(--clr-border);
+  font-size: 1rem;
+}
+
+.addResources input[type="text"] {
+  width: 19.25rem;
+  background-color: transparent;
+  border: 2px solid var(--clr-border);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  margin-bottom: 0;
+  background-color: hsl(220, 21%, 100%);
+  color: var(--clr-border);
+  font-size: 1rem;
+}

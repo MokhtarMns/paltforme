@@ -1,0 +1,114 @@
+{
+  "question1": {
+    "question": "Which of the following is not a benefit of Object-oriented programming?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Code Reusability",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Increased complexity",
+        "correct": true
+      },
+      {
+        "id": "c",
+        "text": "Ease of Maintenance",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "Modularity",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "b"
+    ]
+  },
+  "question2": {
+    "question": "In Object-oriented programming, what is the term for binding data with methods?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Inheritance",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Encapsulation",
+        "correct": true
+      },
+      {
+        "id": "c",
+        "text": "Polymorphism",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "Abstraction",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "b"
+    ]
+  },
+  "question3": {
+    "question": "In OOP, which of the following is not a way to achieve polymorphism?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Method overloading",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Method overriding",
+        "correct": false
+      },
+      {
+        "id": "c",
+        "text": "Interface implementation",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "Multiple inheritance",
+        "correct": true
+      }
+    ],
+    "correctAnswer": [
+      "d"
+    ]
+  },
+  "question4": {
+    "question": "Which of the following is true about OOP inheritance?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "A child class can inherit from multiple parent classes",
+        "correct": true
+      },
+      {
+        "id": "b",
+        "text": "A parent class can inherit from a child class",
+        "correct": false
+      },
+      {
+        "id": "c",
+        "text": "A class can inherit from itself",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "A child class can inherit from only one parent class",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "a"
+    ]
+  }
+}

@@ -1,0 +1,410 @@
+.course {
+  height: 100%;
+  display: flex;
+}
+
+::selection {
+  background-color: hsl(220, 21%, 37%, 0.3);
+  color: #000;
+}
+
+.explained-text {
+  background-color: #f7f7f8;
+  color: #a1a1a1;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.divider {
+  height: 1.8px;
+  width: 100%;
+  background-color: #f3f3f3;
+}
+
+.tasks {
+  height: 100%;
+  flex-basis: 100%;
+}
+
+.tasks > * {
+  margin-inline: auto;
+}
+
+.tasks-header {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 4rem;
+}
+
+.tasks-header > .overlay {
+  position: absolute;
+  bottom: 0;
+  background-color: hsl(0, 0%, 0%, 0.3);
+  width: 100%;
+  text-align: left;
+  padding-left: 3rem;
+  padding-block: 1rem;
+}
+
+.module-title {
+  font-size: 2.5rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.chapter-title {
+  font-size: 1.5rem;
+  color: hsl(0, 0%, 95%);
+  line-height: 1.6;
+}
+
+.control-panel {
+  height: 100%;
+  background-color: var(--clr-surface);
+}
+
+.task {
+  width: 85%;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  max-height: 62px;
+  transition: all 0.5s;
+}
+
+.task > * {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task.open {
+  max-height: 3000px;
+}
+.task-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 2rem;
+  background-color: #374155;
+  box-shadow: 0 0 2px hsl(0, 0%, 0%, 0.2);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.task-header .row {
+  background-color: transparent;
+}
+
+.concept-toggle.rotate {
+  transition: transform 0.2s;
+  transform: rotate(180deg);
+}
+
+.concept-toggle {
+  transform: rotate(0deg);
+  transition: transform 0.2s;
+}
+.test-button {
+  margin-right: 1rem;
+}
+.test-button,
+.concept-toggle {
+  fill: #dae8e7;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.test-button:hover,
+.concept-toggle:hover {
+  fill: #fff7d6;
+  transform: scale(1.04);
+}
+
+.complete-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  border: 2px solid #dae8e7;
+}
+
+.task-body {
+  min-height: 100px;
+  background-color: hsl(0, 0%, 100%);
+  border-right: 1.5px solid #e8e8e8;
+  border-bottom: 1.5px solid #e8e8e8;
+
+  border-left: 4px solid #ef5350f0;
+  padding: 2rem 1rem;
+  color: black;
+  font-size: 0.95rem;
+  border-bottom-left-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+
+.completed-concept {
+  border-left: 4px solid #4caf50f0;
+}
+
+.progress {
+  width: 85%;
+  height: 20px;
+  margin-bottom: 5rem;
+  background-color: hsl(220, 21%, 77%);
+  border-radius: 1rem;
+  display: flex;
+  overflow: hidden;
+  padding: 2px;
+}
+
+.indicator {
+  border-radius: 1rem;
+  background-color: var(--clr-disabled);
+  color: hsl(0, 0%, 0%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  display: flex;
+  border-radius: 0.5rem;
+  padding: 0rem;
+  box-shadow: 0px 0px 5px hsl(0, 0%, 0%, 0.35);
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 5%) !important;
+  font-size: 0.9rem;
+  z-index: 1000;
+}
+
+.popup .button {
+  cursor: pointer;
+  border-radius: 0.125rem;
+  padding: 0.45rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.popup .button img {
+  width: 1rem;
+  height: 1rem;
+  object-fit: cover;
+}
+
+.button:hover {
+  background-color: #eaeaeb;
+}
+
+.explanation-popup {
+  position: absolute;
+  width: 25rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 3px hsl(0, 0%, 0%, 0.3);
+  padding: 0;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 5%);
+}
+
+.explanation-popup input {
+  margin: 0 !important;
+  background-color: transparent;
+  font-size: 0.9rem;
+  width: 100% !important;
+
+}
+
+.explanation-popup form {
+  width: 100%;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.explanation-popup input::placeholder {
+  color: #a1a1a1;
+}
+
+.flex-group {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0rem 1rem;
+  height: 3rem;
+  width: 100%;
+
+  gap: 0.5rem;
+  background-color: #f7f7f8;
+}
+
+
+.icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  cursor: pointer;
+}
+
+.explanation-header {
+  background-color: hsl(220, 21%, 35%);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-bottom: 1.5px solid hsl(0, 0%, 0%, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  color: #e5e6e9;
+}
+
+.loader {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: hsl(220, 21%, 37%);
+  animation: load 0.5s infinite;
+}
+
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.close-button {
+  width: 10px;
+  height: 10px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.explanation-content {
+  background-color: #ffffff;
+  font-size: 0.925rem;
+  color: #0d0d0d;
+}
+
+.exp-text {
+  padding: 0.75rem;
+}
+/*In Task Cards*/
+
+.highlight {
+  font-weight: 600;
+}
+
+.task ul {
+  padding: 0rem 2.5rem !important;
+  list-style: disc !important;
+}
+
+.task ul > li {
+  margin-top: 0.5rem;
+}
+
+.typed-text {
+  overflow: hidden;
+  white-space: wrap;
+  width: 0;
+  animation: typing 10s steps(20, end) forwards;
+}
+
+.ai-challenge {
+  display: flex;
+  align-items: center;
+}
+
+.documentation{
+  padding-bottom: 1.5rem;
+}
+
+.ai-challenge p {
+  margin-top: 0.6rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: hsl(220, 21%, 27%);
+}
+
+.bot-container {
+  width: 4rem;
+  height: 4rem;
+  background-size: 170%;
+  background-position: 20% center;
+}
+
+.btn {
+  border: none;
+
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: #374155;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+
+  margin-top: 0.7rem;
+  margin-left: 1rem;
+}
+
+.sparkle {
+  fill: #f3f3f3;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: #f3f3f3;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg, #674e99, #452b9b);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2), 0px 0px 180px 0px transparent;
+  transform: translateY(-1px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+}
+
+.questions{
+  padding-bottom: 3rem !important;
+
+}
+
+.ai-challenge{
+  margin-bottom: -1rem;
+}
+.loading{
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #374155;
+  align-items: center;
+}

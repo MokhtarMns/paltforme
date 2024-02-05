@@ -1,0 +1,56 @@
+.progress-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.progress-card p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+.progress-card .module-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-card .chapter-progress {
+  margin-bottom: 10px;
+}
+
+.progress-bar-dash {
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #ddd;
+  height: 15px;
+}
+
+.progress-bar-dash .bar {
+  height: 100%;
+  width: 0;
+  transition: width 1s ease-out;
+  border-radius: 1rem;
+}
+
+.completed {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.in-progress {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+[title]:hover::before {
+  background-color: #ffcc00; /* Set your desired background color here */
+  color: #000; /* Set the text color */
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
