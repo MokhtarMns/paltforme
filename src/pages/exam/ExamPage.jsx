@@ -128,3 +128,10 @@ export default ExamPage;
 //Shema de l'architecture
 
 //Choix Techniques d'implementation
+
+
+/**
+ * git config --global user.email "mansourimokhtar33@gmail.com"
+git config --global user.name "MokhtarMns"
+
+*/
