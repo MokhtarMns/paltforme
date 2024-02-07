@@ -1,0 +1,83 @@
+<p>Operator overloading in C++ allows programmers to redefine the behavior of operators such as +, -, *, /, etc., for user-defined types. This feature enhances the expressiveness and flexibility of the language by enabling custom operations on user-defined objects.</p>
+
+<h2>How to Overload Operators</h2>
+
+<p>Operators can be overloaded in C++ using either member functions or non-member functions.</p>
+
+<h3>▶ Using Member Functions</h3>
+
+<p>When overloading operators using member functions, the overloaded operator becomes a member function of the class and takes another object of the same class as its argument.</p>
+
+<pre><code class="language-cpp">
+class Complex {\n     double real;\n     double imag;\n \n public:\n     Complex(double r, double i) : real(r), imag(i) {}\n \n     Complex operator+(const Complex&amp; other) const {\n         return Complex(real + other.real, imag + other.imag);\n     }\n \n     // Other overloaded operators can be defined similarly\n };
+</code></pre> 
+
+<h3>▶ Using Non-Member Functions</h3>
+
+<p>Alternatively, operators can be overloaded using non-member functions by declaring them as friend functions inside the class definition. This approach allows for greater flexibility and symmetry when dealing with binary operators.</p>
+
+<pre><code class="language-cpp">
+class Matrix {
+    // Matrix definition\n \n public:\n     friend Matrix operator*(const Matrix&amp; lhs, const Matrix&amp; rhs) {\n         // Multiply matrices and return result\n     }\n \n     // Other overloaded operators can be defined similarly\n };
+</code></pre> 
+
+<h2>Commonly Overloaded Operators and Their Use Cases</h2>
+
+<p>Various operators can be overloaded to provide custom behavior for user-defined types. Here are some commonly overloaded operators and their typical use cases:</p>
+
+<ul>
+    <li><b>+</b> (addition): Used to add two objects together, such as adding two complex numbers or concatenating strings.</li>
+    <li><b>-</b> (subtraction): Used to subtract one object from another, such as finding the difference between two complex numbers or removing substrings from strings.</li>
+    <li><b>*</b> (multiplication): Used to multiply two objects together, such as multiplying two matrices or scaling vectors.</li>
+    <li><b>/</b> (division): Used to divide one object by another, such as dividing one complex number by another or splitting strings.</li>
+    <!-- Add more operators and their use cases -->
+</ul>
+
+<h2>Best Practices and Guidelines</h2>
+
+<p>When overloading operators, it is important to adhere to best practices and guidelines to ensure code clarity, maintainability, and safety.</p>
+
+<ul>
+    <li>Only overload operators when it makes semantic sense for your class.</li>
+    <li>Follow the conventions and meanings associated with the operators being overloaded.</li>
+    <li>Provide consistent and intuitive behavior for the overloaded operators.</li>
+    <li>Avoid overloading operators in a way that may cause confusion or unexpected behavior.</li>
+</ul>
+
+<h2>Examples</h2>
+
+<p>Below are examples demonstrating operator overloading for custom classes:</p>
+
+<h3>▶ Complex Numbers</h3>
+
+<p>Let's consider the example of operator overloading for complex numbers:</p>
+
+<pre><code class="language-cpp">
+    #include &lt;iostream&gt;\n \n 
+    class Complex {\n 
+        double real;\n 
+        double imag;\n \n 
+        public:\n 
+        Complex(double r, double i) : real(r), imag(i) {}\n \n 
+        Complex operator+(const Complex&amp; other) const {\n 
+            return Complex(real + other.real, imag + other.imag);\n 
+        }\n \n     // Other overloaded operators can be defined similarly\n };\n \n int main() {\n     Complex c1(3.5, 2.5);\n     Complex c2(1.5, 4.5);\n     Complex sum = c1 + c2;\n     std::cout &lt;&lt; "Sum: ";\n     sum.display();\n     return 0;\n }
+</code></pre> 
+
+<h3>▶ Matrices</h3>
+
+<p>Similarly, let's demonstrate operator overloading for matrices:</p>
+
+<pre><code class="language-cpp">
+#include &lt;iostream&gt;\n \n class Matrix {\n     // Matrix definition\n \n public:\n     Matrix(/* Matrix initialization parameters */) {\n         // Matrix initialization\n     }\n \n     friend Matrix operator*(const Matrix&amp; lhs, const Matrix&amp; rhs) {\n         // Multiply matrices and return result\n     }\n \n     // Other overloaded operators can be defined similarly\n };\n \n int main() {\n     Matrix m1(/* Matrix initialization arguments */);\n     Matrix m2(/* Matrix initialization arguments */);\n     Matrix product = m1 * m2;\n     std::cout &lt;&lt; "Product: ";\n     product.display();\n     return 0;\n }
+</code></pre> 
+
+<h2>Potential Pitfalls and Considerations</h2>
+
+<p>When overloading operators, there are several considerations to keep in mind to avoid pitfalls and ensure correct behavior:</p>
+
+<ul>
+    <li>Avoid overloading operators in a way that leads to ambiguity or unexpected behavior.</li>
+    <li>Ensure that overloaded operators maintain consistency with their conventional meanings.</li>
+    <li>Exercise caution when overloading operators for complex operations to avoid inefficiencies or errors.</li>
+</ul>

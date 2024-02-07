@@ -1,7 +1,7 @@
 :root {
   /* ===== Colors ===== */
   --body-color: #e4e9f7;
-  --sidebar-color: hsl(0, 0%, 10%);
+  --sidebar-color: var(--clr-bg-clear);
   --primary-color: hsl(0, 0%, 90%);
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
@@ -18,7 +18,7 @@ body {
   transition: var(--tran-05);
 }
 ::selection {
-  background-color: var(--primary-color);
+  background-color: #617BFF !important;
   color: #fff;
 }
 body.dark {
@@ -53,6 +53,8 @@ body.dark {
   margin-top: 10px;
 }
 .sidebar .icon {
+  color: #fff !important;
+
   min-width: 50px;
   border-radius: 6px;
 }
@@ -188,10 +190,9 @@ body.dark .sidebar header .toggle {
   background-color: var(--primary-color);
 }
 
-
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
-  color: var(--sidebar-color);
+  color: var(--sidebar-color) !important;
 }
 body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {

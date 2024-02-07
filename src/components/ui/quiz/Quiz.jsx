@@ -18,8 +18,8 @@ const Quiz = memo(
     reload,
     moduleId,
     showHeader = true,
-    onCorrectAnswer,
-    onComplete,
+    onCorrectAnswer = () => {},
+    onComplete = () => {},
   }) => {
     const [userAnswers, setUserAnswers] = useState({});
     const [submittedQuestions, setSubmittedQuestions] = useState([]);
@@ -123,7 +123,7 @@ const Quiz = memo(
           newScores[questionId] = 1;
           let newCount = count + 1;
           setCount(newCount);
-          setFeedbackColor("green");
+          setFeedbackColor("green-bg");
           onCorrectAnswer();
           console.log("Total: ", questionsNumber, "count: ", newCount);
           if (newCount == questionsNumber) {
@@ -135,16 +135,16 @@ const Quiz = memo(
               setShowCongrats(true);
               setTimeout(() => {
                 setShowCongrats(false);
-              }, 2600);
+              }, 4600);
             }
           }
         } else {
           newScores[questionId] = 0;
-          setFeedbackColor("red");
-          setFeedbackColor("red");
+          setFeedbackColor("red-bg");
         }
       }
 
+      console.warn({ newScores });
       setScores((oldScores) => ({ ...oldScores, ...newScores }));
 
       if (variant != "teacher_quiz" && variant != "teacher_exam") {
@@ -166,28 +166,44 @@ const Quiz = memo(
         {showFeedback && (
           <div className={`feedback-popup ${feedbackColor}`}>
             <p className="feedback-message">
-              {feedbackColor === "green"
+              {feedbackColor === "green-bg"
                 ? "Nice! Your answer is correct."
                 : "Ooh! Your answer is incorrect."}
             </p>
           </div>
         )}
-        {congrats && (
+        {congrats  && (
           <div className="congrats">
             <img src={bot} alt="" />
             <p>
-              You finished this task. <span>Congratulations!</span>
+              You finished this quiz. <span>Congratulations!</span>
             </p>
           </div>
         )}
         {showHeader && (
           <div className="text-with-divider">
-            <p style={{ color: `${answered && "#4caf50"}` }}>
+            <p
+              className={
+                variant == "teacher_quiz" || variant == "teacher_exam"
+                  ? answered
+                    ? "green-text"
+                    : "red-text"
+                  : "green-text"
+              }
+            >
               {variant == "teacher_quiz" || variant == "teacher_exam"
                 ? "Answer the questions below"
                 : "AI generated questions"}
             </p>
-            <div className="horizontal-divider"></div>
+            <div
+              className={`horizontal-divider ${
+                (variant == "teacher_quiz" || variant == "teacher_exam")
+                  ? answered
+                    ? "green"
+                    : "red"
+                  : "green"
+              }`}
+            ></div>
           </div>
         )}
         <div className="questions">
@@ -210,13 +226,13 @@ const Quiz = memo(
                           ? questions[questionId].correctAnswer?.includes(
                               answer.id
                             )
-                            ? "#4caf50"
-                            : "#ef5350"
+                            ? "var(--clr-bg-green)"
+                            : "var(--clr-bg-red)"
                           : completed &&
                             questions[questionId].correctAnswer?.includes(
                               answer.id
                             )
-                          ? "#4caf50"
+                          ? "var(--clr-bg-green)"
                           : submittedQuestions.includes(questionId) &&
                             (variant == "teacher_quiz" ||
                               variant == "teacher_exam") &&
@@ -224,7 +240,7 @@ const Quiz = memo(
                           ? questions[questionId].correctAnswer?.includes(
                               answer.id
                             )
-                            ? "#4caf50"
+                            ? "var(--clr-bg-green)"
                             : ""
                           : userAnswers[questionId]?.includes(answer.id) &&
                             (submittedQuestions.includes(questionId)
@@ -232,16 +248,16 @@ const Quiz = memo(
                                 ? questions[questionId].correctAnswer?.includes(
                                     answer.id
                                   )
-                                  ? "#4caf50"
-                                  : "#ef5350"
+                                  ? "var(--clr-bg-green)"
+                                  : "var(--clr-bg-red)"
                                 : variant == "teacher_quiz" ||
                                   variant == "teacher_exam"
                                 ? "var(--clr-highlight)"
                                 : questions[questionId].correctAnswer?.includes(
                                     answer.id
                                   )
-                                ? "#4caf50"
-                                : "#ef5350"
+                                ? "var(--clr-bg-green)"
+                                : "var(--clr-bg-red)"
                               : "var(--clr-highlight)"),
                     }}
                     onClick={() => {
@@ -278,9 +294,11 @@ const Quiz = memo(
                 }
                 style={{
                   backgroundColor: completed
-                    ? "#4caf50"
+                    ? "var(--clr-bg-green)"
                     : submittedQuestions.includes(questionId) &&
-                      (scores[questionId] ? "#4caf50" : "#ef5350"),
+                      (scores[questionId]
+                        ? "var(--clr-bg-green)"
+                        : "var(--clr-bg-red)"),
                 }}
               >
                 <span className="text">

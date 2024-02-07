@@ -31,10 +31,10 @@ const RadarChart = ({ data }) => {
     scales: {
       r: {
         grid: {
-          color: "rgba(0, 0, 0, 0.3)",
+          color: "#999",
         },
         angleLines: {
-          color: "rgba(0, 0, 0, 0.4)",
+          color: "#999",
           lineWidth: 2,
         },
         suggestedMin: 1,

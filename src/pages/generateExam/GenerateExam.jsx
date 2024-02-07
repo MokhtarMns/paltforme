@@ -16,8 +16,7 @@ const GenerateExamPage = () => {
     "Multi Choices",
     "True / False",
     "Guess Code Output",
-    "Fill the Gaps",
-    "Kech 7aja",
+    "Fill the Gaps"
   ];
   const difficultyLevels = ["Easy", "Intermediate", "Advanced"];
   const { userData } = useContext(UserContext);

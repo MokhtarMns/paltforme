@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext, useRef, createFactory } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import preview from "../../assets/images/illustration-article.svg";
@@ -14,6 +14,14 @@ import { UserContext } from "../../providers/UserProvider";
 import "./style.css";
 import Quiz from "../../components/ui/quiz/Quiz";
 import Draggable from "react-draggable";
+
+import hljs from "highlight.js";
+
+import "highlight.js/styles/github-dark-dimmed.css"; // Import default styles
+
+import cpp from "highlight.js/lib/languages/cpp"; // Import the C++ language module
+
+hljs.registerLanguage("cpp", cpp);
 
 const Popup = ({
   selectedText,
@@ -101,7 +109,11 @@ const Popup = ({
                 </>
               ) : (
                 <div className="exp-text">
-                  <div className="loader"></div>
+                  <div class="three-body">
+                    <div class="three-body__dot"></div>
+                    <div class="three-body__dot"></div>
+                    <div class="three-body__dot"></div>
+                  </div>
                 </div>
               )}
             </div>
@@ -128,7 +140,11 @@ const Popup = ({
                 ) : (
                   waitingForAnswer && (
                     <div className="exp-text">
-                      <div className="loader"></div>
+                      <div class="three-body">
+                        <div class="three-body__dot"></div>
+                        <div class="three-body__dot"></div>
+                        <div class="three-body__dot"></div>
+                      </div>
                     </div>
                   )
                 )}
@@ -208,6 +224,22 @@ export function Course() {
     };
   }, []);
 
+  useEffect(() => {
+    // Initialize highlight.js
+
+    setTimeout(() => {
+      document.querySelectorAll("code").forEach((contentDiv) => {
+        contentDiv.innerHTML = contentDiv.textContent.replace(/\\n/g, "\n");
+      });
+
+      setTimeout(() => {
+        document.querySelectorAll("code").forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      }, 2000);
+    }, 1000);
+  }, []);
+
   const handleSelection = (conceptIndex) => () => {
     if (!selectionHandled) {
       const selection = window.getSelection();
@@ -281,10 +313,10 @@ export function Course() {
   };
 
   function getColor(value) {
-    var red = "#ef5350f0";
-    var orange = "#FF9843f0";
-    var yellow = "#FDE767f0";
-    var green = "#4caf50f0";
+    var red = "#bd0524";
+    var orange = "#bd6405";
+    var yellow = "#bda405";
+    var green = "#009966";
 
     // Determine the current color range
     var colorRange;
@@ -441,7 +473,7 @@ export function Course() {
         <div
           className="tasks-header"
           style={{
-            backgroundColor: pastelColors[getChapterOrder(chapterId)],
+            backgroundColor: "#AFC8ED",
           }}
         >
           <div className="overlay">
@@ -484,14 +516,21 @@ export function Course() {
                 }`}
                 key={concept.id}
               >
-                <div className="task-header">
+                <div
+                  className="task-header"
+                  style={{
+                    backgroundColor: completedConcepts.includes(concept.id)
+                      ? "#0D2626"
+                      : "",
+                  }}
+                >
                   <div className="row">
                     <div
                       className="complete-indicator"
                       style={{
                         backgroundColor: completedConcepts.includes(concept.id)
-                          ? "#4caf50f0"
-                          : "transparent",
+                          ? "#009966"
+                          : "#203246",
                       }}
                     ></div>
                     <p>{concept.title}</p>
@@ -595,7 +634,8 @@ c245 245 447 445 450 445 3 0 61 -56 130 -125z m-1120 -1120 l125 -125 -50
                 </div>
                 <div
                   className={`task-body ${
-                    completedConcepts.includes(concept.id) && "completed-concept"
+                    completedConcepts.includes(concept.id) &&
+                    "completed-concept"
                   }`}
                 >
                   <div className="concept-content">
@@ -619,12 +659,11 @@ c245 245 447 445 450 445 3 0 61 -56 130 -125z m-1120 -1120 l125 -125 -50
                         onQuizResult={(isCorrect) =>
                           handleQuizResult(concept.id, isCorrect)
                         }
-                        moduleId = {moduleId}
+                        moduleId={moduleId}
                       ></Quiz>
                     </div>
 
                     {(!showQuiz || selectedConcept !== concept) &&
-                      
                       !loadingQuiz && (
                         <>
                           <div className="horizontal-divider"></div>
@@ -660,7 +699,12 @@ c245 245 447 445 450 445 3 0 61 -56 130 -125z m-1120 -1120 l125 -125 -50
                   </div>
                   {loadingQuiz ? (
                     <div className="loading">
-                      <div className="loader"></div> Generating Quiz
+                      <div class="three-body">
+                        <div class="three-body__dot"></div>
+                        <div class="three-body__dot"></div>
+                        <div class="three-body__dot"></div>
+                      </div>{" "}
+                      Generating Quiz
                     </div>
                   ) : (
                     showQuiz &&
@@ -670,20 +714,20 @@ c245 245 447 445 450 445 3 0 61 -56 130 -125z m-1120 -1120 l125 -125 -50
                         onClose={() => {
                           setShowQuiz(false);
                           setLoadingQuiz(false);
-
                         }}
                         onReload={() => {
                           handleQuizButtonClick(event, concept);
                         }}
                         questionsNumber={
-                          Object.keys(safeJSONParse(concept.questions)).length + 1
+                          Object.keys(safeJSONParse(concept.questions)).length +
+                          1
                         }
                         conceptId={concept.id}
                         onQuizResult={(isCorrect) =>
                           handleQuizResult(concept.id, isCorrect)
                         }
                         completed={false}
-                        moduleId = {moduleId}
+                        moduleId={moduleId}
                       />
                     )
                   )}

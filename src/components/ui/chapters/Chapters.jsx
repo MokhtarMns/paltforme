@@ -14,8 +14,8 @@ export function Chapters({ variant = "courses" }) {
   const [selectedCourseId, setSelectedCourseId] = useState(null);
   const pastelColors = [
     "#AFC8AD",
-    "#29ADB2",
-    "#F7B787",
+    "hsl(182, 63%, 33%)",
+    "hsl(26, 88%, 35%)",
     "#88AB8E",
     "#8ADAB2",
     "#FF8F8F",
@@ -133,7 +133,7 @@ export function Chapters({ variant = "courses" }) {
       )}
 
       <div className="chapters-list">
-        <div className="progress-bar"></div>
+       
 
         {(variant === "exams" ? exams : courses)?.map((course) => (
           <Link
@@ -157,21 +157,11 @@ export function Chapters({ variant = "courses" }) {
               key={course.id}
               onClick={() => handleTileClick(course)}
             >
-              <div
-                className="circle"
-                style={{
-                  backgroundColor: course.passed ? "#4caf50" : "var(--clr-bg)",
-                }}
-              >
-                {course.passed ? <img src={passed} alt="" /> : <></>}
-              </div>
-              <div className="row">
+              
+              <div className="row" style={{background: course.passed ? "#0D2626" : ""}}>
                 <div
                   className="chapter-number"
-                  style={{
-                    backgroundColor:
-                      pastelColors[(course.order + 1) % pastelColors.length],
-                  }}
+                  style={{background: course.passed ? "#009966" : "#203246"}}
                 >
                   <p>{course.order}</p>
                 </div>

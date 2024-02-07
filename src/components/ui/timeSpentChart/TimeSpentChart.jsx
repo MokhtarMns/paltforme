@@ -41,12 +41,17 @@ const TimeSpentChart = () => {
       x: {
         categorySpacing: 2, // Adjust the spacing between ticks
         grid: {
-            display: false, // Hide the grid lines on the y-axis
+            display: true, // Hide the grid lines on the y-axis
+            color: "#999"
           },
         
       },
       y: {
         beginAtZero: true,
+        grid: {
+          display: true,
+          color: "#999"
+        },
         ticks: {
             display: false, // Hide ticks on the x-axis
           },

@@ -125,13 +125,17 @@ const Dashboard = () => {
         
         <div className="card solved-tasks-card">
           <h2>{`${totalTasksSolved} ${
-            totalTasksSolved <= 1 ? "Task" : "Tasks"
+            totalTasksSolved <= 1 ? "Course" : "Courses"
           }`}</h2>
-          <p>Completed this week</p>
+          <p className="xyz">Completed this week</p>
           <TaskChart data={completedConcepts}></TaskChart>
         </div>
+        <div className="card solved-tasks-card">
+          <h2 className="xyz">Time Spent</h2>
+          <TimeSpentChart></TimeSpentChart>
+        </div>
         <div className="card no-padding">
-          <h2>Answers Pattern</h2>
+          <h2>Effort Distribution</h2>
           <div className="radar-chart">
             <RadarChart data={answersCount}></RadarChart>
           </div>

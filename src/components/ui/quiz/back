@@ -1,0 +1,42 @@
+ style={{
+                      backgroundColor:
+                        variant == "teacher_exam" &&
+                        submittedQuestions.includes(questionId) &&
+                        scores[questionId] == 0
+                          ? questions[questionId].correctAnswer?.includes(
+                              answer.id
+                            )
+                            ? "var(--clr-bg-green)"
+                            : "var(--clr-bg-red)"
+                          : completed &&
+                            questions[questionId].correctAnswer?.includes(
+                              answer.id
+                            )
+                          ? "var(--clr-bg-green)"
+                          : submittedQuestions.includes(questionId) &&
+                            (variant == "teacher_quiz" ||
+                              variant == "teacher_exam") &&
+                            scores[questionId]
+                          ? questions[questionId].correctAnswer?.includes(
+                              answer.id
+                            )
+                            ? "var(--clr-bg-green)"
+                            : ""
+                          : userAnswers[questionId]?.includes(answer.id) &&
+                            (submittedQuestions.includes(questionId)
+                              ? scores[questionId]
+                                ? questions[questionId].correctAnswer?.includes(
+                                    answer.id
+                                  )
+                                  ? "var(--clr-bg-green)"
+                                  : "var(--clr-bg-red)"
+                                : variant == "teacher_quiz" ||
+                                  variant == "teacher_exam"
+                                ? "var(--clr-highlight)"
+                                : questions[questionId].correctAnswer?.includes(
+                                    answer.id
+                                  )
+                                ? "var(--clr-bg-green)"
+                                : "var(--clr-bg-red)"
+                              : "var(--clr-highlight)"),
+                    }}

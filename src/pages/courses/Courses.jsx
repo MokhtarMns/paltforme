@@ -17,7 +17,7 @@ export function Courses({ forExam }) {
     // Map other keys to their respective images
   };
   const pastelColors = [
-    "#AFC8AD",
+    "#AFC8ED",
     "#29ADB2",
     "#F7B787",
     "#88AB8E",
@@ -54,7 +54,7 @@ export function Courses({ forExam }) {
 
   return (
     <div className="courses">
-      <h1>{forExam ? "Knowledge Assessments" : "Welcome!"}</h1>
+      <h1>{forExam ? "Exams" : "Modules"}</h1>
       <div className="courses-grid">
         {courses.map((course, index) => (
           <Link
@@ -80,7 +80,7 @@ export function Courses({ forExam }) {
                 className="card-preview"
                 style={{ backgroundColor: pastelColors[index] }}
               >
-                <img src={imageMap[course.id]} alt="" />
+                
               </div>
               <div className="course-name">
                 <p>{course.label}</p>

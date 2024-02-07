@@ -2,8 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1rem;
+
+  --clr-bg-green: hsl(180, 49%, 25%);
+  --clr-bg-red: hsl(337, 27%, 15%);
 }
 
+.green-bg {
+  background-color: #0d2626;
+}
+
+.red-bg {
+  background-color: #22131f;
+}
 .feedback-popup {
   position: fixed;
   top: 3rem;
@@ -25,18 +36,26 @@
     transform: scale(1);
   }
 }
-
-.green {
-  background-color: #4caf50f0;
+.red-text {
+  color: #bd0524 !important;
 }
 
 .red {
-  background-color: #ef5350f0;
+  background-color: #bd0524 !important;
 }
+
+.green-text {
+  color: #009966 !important;
+}
+
+.green {
+  background-color: #009966 !important;
+}
+
 .question {
   margin-top: 0rem;
 }
-.question p{
+.question p {
   margin-bottom: 0.6rem;
 }
 .answers {
@@ -48,12 +67,14 @@
   border-radius: 0.25rem;
   width: 100%;
   text-align: left;
-  background-color: #707788;
+  /*background-color: #707788;*/
+  background-color: hsl(218, 32%, 12%);
+  box-shadow: 0 0 5px solid hsl(0, 0%, 0%, 1);
+  color: #fff !important;
 }
 .answer:disabled {
   color: hsl(0, 0%, 90%);
-  cursor:not-allowed;
-
+  cursor: not-allowed;
 }
 
 .text-with-divider {
@@ -86,7 +107,7 @@
 
 .submit-button:disabled {
   cursor: not-allowed;
-  color:  hsl(0, 0%, 90%);;
+  color: hsl(0, 0%, 90%);
 }
 
 .submit-button img {
@@ -96,21 +117,24 @@
 
 .score-section {
   margin-top: 2rem;
-  border-top: 1.5px solid hsl(0, 0%, 0%, 0.2);
+  border-top: 2px solid var(--clr-bg);
 }
 
 .score-section p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  color: #fff;
+  margin-top: 1rem;
 }
 .buttons-row {
+  margin-top: 1rem;
   display: flex;
   gap: 1rem;
 }
 
 .buttons-row > button {
   flex-grow: 1;
-  background-color: #374155;
+  background-color: var(--clr-bg);
 }
 
 .congrats {
@@ -119,15 +143,17 @@
   left: 6rem;
   width: 27rem;
   height: 8rem;
-  background-color: #c4cbde;
+  background-color: var(--clr-bg-green);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
-  animation: popup-congrats 1.3s ease-out forwards;
+  box-shadow: 0 0 5px hsl(0, 0%, 0%, 0.2);
+  animation: popup-congrats 3s ease-out forwards;
 }
 
 .congrats p {
   font-size: 1.3rem;
+  margin-left: -1.5rem;
 }
 
 .congrats span {
@@ -137,7 +163,7 @@
 .congrats img {
   object-fit: cover;
   height: 170%;
-  margin-left: -2rem;
+  margin-left: 0rem;
   margin-top: -1rem;
 }
 
@@ -164,6 +190,6 @@
   }
 }
 
-.bold{
+.bold {
   font-weight: 500;
 }

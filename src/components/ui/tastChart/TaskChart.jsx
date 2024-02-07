@@ -10,8 +10,8 @@ const TaskChart = ({ data }) => {
         label: "Tasks",
         data: data.map((entry) => entry.tasksSolved),
         fill: true,
-        backgroundColor: "#37415540",
-        borderColor: "#374155aa",
+        backgroundColor: "#22CFCF20",
+        borderColor: "#22CFCF",
         tension: 0.3,
       },
     ],
@@ -31,13 +31,16 @@ const TaskChart = ({ data }) => {
       x: {
         ticks: {
           display: false,
+          beginAtZero : true
         },
   
         // to remove the x-axis grid
         grid: {
           drawBorder: true,
           display: true,
+          color: "#999"
         },
+
       },
       // to remove the y-axis labels
       y: {
@@ -49,11 +52,11 @@ const TaskChart = ({ data }) => {
         grid: {
           drawBorder: true,
           display: true,
+          color: "#999"
         },
       },
     },
   };
-  
   return (
     <div>
       <Line data={chartData} options={options}  />

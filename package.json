@@ -12,6 +12,7 @@
   "dependencies": {
     "boxicons": "^2.1.4",
     "firebase": "^10.7.1",
+    "highlight.js": "^11.9.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",

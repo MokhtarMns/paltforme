@@ -1,0 +1,114 @@
+{
+  "question1": {
+    "question": "What does operator overloading allow in C++?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Redefine the behavior of operators for built-in types only",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Redefine the behavior of operators for user-defined types",
+        "correct": true
+      },
+      {
+        "id": "c",
+        "text": "Restrict the use of operators to predefined operations",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "Eliminate the use of operators in C++",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "b"
+    ]
+  },
+  "question2": {
+    "question": "Which approach allows operator overloading in C++?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Encapsulation",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Polymorphism",
+        "correct": false
+      },
+      {
+        "id": "c",
+        "text": "Using member functions",
+        "correct": true
+      },
+      {
+        "id": "d",
+        "text": "Abstraction",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "c"
+    ]
+  },
+  "question3": {
+    "question": "Which of the following is a commonly overloaded operator in C++?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "+",
+        "correct": true
+      },
+      {
+        "id": "b",
+        "text": "!",
+        "correct": false
+      },
+      {
+        "id": "c",
+        "text": "==",
+        "correct": false
+      },
+      {
+        "id": "d",
+        "text": "&",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "a"
+    ]
+  },
+  "question4": {
+    "question": "What is a potential pitfall when overloading operators in C++?",
+    "answers": [
+      {
+        "id": "a",
+        "text": "Increased code clarity",
+        "correct": false
+      },
+      {
+        "id": "b",
+        "text": "Reduced flexibility",
+        "correct": false
+      },
+      {
+        "id": "c",
+        "text": "Ambiguity or unexpected behavior",
+        "correct": true
+      },
+      {
+        "id": "d",
+        "text": "Easier debugging process",
+        "correct": false
+      }
+    ],
+    "correctAnswer": [
+      "c"
+    ]
+  }
+}

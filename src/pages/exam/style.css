@@ -12,9 +12,10 @@
 .quiz-wrapper {
   width: 75%;
   margin: 0 auto;
-  color: hsl(0, 0%, 0%);
+  color: #fff;
   padding: 1.5rem;
-  border: 1.5px solid hsl(0, 0%, 0%, 0.3);
+  border: 1.5px solid #999;
+
 }
 
 .result-popup {
